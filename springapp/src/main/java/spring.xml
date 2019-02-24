@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!--  new B() -->
+<context:property-placeholder location="classpath:db.properties"/>
+<!-- <bean id="obj" class="com.srivastava.springapp.C" scope="prototype"> 
+<constructor-arg index="0" value="Hello" type="java.lang.String"></constructor-arg>
+<property name="d" ref="dobj"></property> -->
+<!-- 
+<constructor-arg index="1" ref="dobj" type="com.srivastava.springapp.D"> </constructor-arg>
+ -->
+<!-- <property name="message" value="Hi"></property>  -->
+
+<!-- </bean>
+<bean id="dobj" class="com.srivastava.springapp.D">
+<constructor-arg index="0" value="${xvalue}" type="int"></constructor-arg>
+<constructor-arg  value="${yvalue}" name="y" type="int"></constructor-arg>
+</bean> -->
+<bean id="e" name="e1" class="com.srivastava.springapp.E" init-method="start" destroy-method="stop">
+</bean>
+<alias name="e" alias="e2"/>
+</beans>

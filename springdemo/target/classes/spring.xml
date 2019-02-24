@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd" default-init-method="start" default-destroy-method="stop">
+
+<bean id="obj" autowire="byName" class="com.srivastava.apps.springdemo.Provider" lazy-init="true" init-method="start" destroy-method="stop">
+	<!-- <property name="b" ref="obj3"/> -->
+	<property name="b">
+	<bean  class="com.srivastava.apps.springdemo.B" lazy-init="true">
+	</bean>
+	</property>
+	<!-- <property name="d" ref="d"></property> -->
+</bean>
+<bean id="obj2" name="x@123,y,z" class="com.srivastava.apps.springdemo.Provider2">
+
+</bean>
+<bean id="d" class="com.srivastava.apps.springdemo.D" lazy-init="true">
+<property name="message" value="Hello D"/>
+</bean>
+<bean id="d1" class="com.srivastava.apps.springdemo.D" lazy-init="true">
+<property name="message" value="Hello D1"/>
+</bean>
+<bean id="c"  class="com.srivastava.apps.springdemo.C" lazy-init="true">
+
+</bean>
+<alias name="obj2" alias="hello"/>
+<!-- <bean id="obj3" class="com.srivastava.apps.springdemo.B">
+</bean> -->
+<bean id="parentcustomer" class="com.srivastava.apps.springdemo.Customer">
+<property name="companyName" value="IBM"/>
+<property name="companyCity" value="Noida"/>
+</bean>
+<bean id="ram" parent="parentcustomer" class="com.srivastava.apps.springdemo.Customer">
+<property name="id" value="1001"/>
+<property name="name" value="Ram"/>
+<property name="balance" value="99999"/>
+</bean>
+</beans>
