@@ -4,65 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-<!--  new B() -->
-<context:property-placeholder location="classpath:db.properties"/>
-<bean id="ckbean" class="com.srivastava.springapp.CompositeKey">
-<property name="name" value="Amit"/>
-<property name="email" value="amit@yahoo.com"/>
-<property name="phone" value="2222"/>
-</bean>
-<bean id="bobj" lazy-init="true" class="com.srivastava.springapp.B">
-</bean>
-<bean id="cobj" lazy-init="true" class="com.srivastava.springapp.C">
-</bean>
 
-<bean id="emp" class="com.srivastava.springapp.Emp">
-<property name="id" value="1001"/>
-<property name="name" value="Ram"/>
-<property name="dept">
-<list>
-<ref bean="dept1"/>
-<ref bean="dept2"/>
-<ref bean="dept3"/>
-</list>
-</property>
-<property name="deptMap">
-<map>
-<entry key-ref="ckbean" value-ref="dept1"></entry>
-<!-- <entry key-ref="compbean" value-ref="dept1"></entry> -->
-<!-- <entry key="admin" value-ref="dept2"></entry>
-<entry key="admin" value-ref="dept3"></entry> -->
-</map>
-</property>
-</bean>
-<bean id="dept1" class="com.srivastava.springapp.Dept">
-<constructor-arg index="0" value="10"></constructor-arg>
-<constructor-arg index="1" value="IT"></constructor-arg>
-</bean>
-<bean id="dept2" class="com.srivastava.springapp.Dept">
-<constructor-arg index="0" value="20"></constructor-arg>
-<constructor-arg index="1" value="ADMIN"></constructor-arg>
-</bean>
-<bean id="dept3" class="com.srivastava.springapp.Dept">
-<constructor-arg index="0" value="30"></constructor-arg>
-<constructor-arg index="1" value="HR"></constructor-arg>
-</bean>
-
-<!-- <bean id="obj" class="com.srivastava.springapp.C" scope="prototype"> 
-<constructor-arg index="0" value="Hello" type="java.lang.String"></constructor-arg>
-<property name="d" ref="dobj"></property> -->
-<!-- 
-<constructor-arg index="1" ref="dobj" type="com.srivastava.springapp.D"> </constructor-arg>
- -->
-<!-- <property name="message" value="Hi"></property>  -->
-
-<!-- </bean>
-<bean id="dobj" class="com.srivastava.springapp.D">
-<constructor-arg index="0" value="${xvalue}" type="int"></constructor-arg>
-<constructor-arg  value="${yvalue}" name="y" type="int"></constructor-arg>
-</bean> -->
-<bean lazy-init="true" id="e" name="e1" class="com.srivastava.springapp.E" init-method="start" destroy-method="stop">
-<property name="message" value="Hello"/>
-</bean>
-<alias name="e" alias="e2"/>
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.srivastava"></context:component-scan>
 </beans>
