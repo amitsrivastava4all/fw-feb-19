@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,8 +18,9 @@ import org.hibernate.annotations.Type;
 @Table(name = "emp_mst")
 public class Employee {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name = "ename",nullable = false,unique = true,length = 30)
+	@Column(name = "ename",nullable = false,length = 30)
 	private String name;
 	private double salary;
 	@Type(type="yes_no")
@@ -28,8 +31,8 @@ public class Employee {
 	public Employee() {
 		
 	}
-	public Employee(int id, String name, double salary) {
-		this.id = id;
+	public Employee( String name, double salary) {
+		
 		this.name = name;
 		this.salary = salary;
 		this.att = true;
