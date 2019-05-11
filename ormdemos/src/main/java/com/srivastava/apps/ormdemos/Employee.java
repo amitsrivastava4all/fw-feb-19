@@ -25,7 +25,7 @@ public class Employee {
 	private double salary;
 	@Type(type="yes_no")
 	private boolean  att;
-	@Transient
+	//@Transient
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date doj;
 	public Employee() {
